@@ -136,7 +136,7 @@ class AIMoveStrategy implements MoveStrategy {
 }
 
 // ===================== TicTacToeGame =====================
-class TicTacToeGame {
+class Game {
     Deque<Player> players;
     Board gameBoard;
     private String winner = "";
@@ -209,9 +209,9 @@ class TicTacToeGame {
 }
 
 // ===================== Main =====================
-public class TicTacToeGameLLD {
+public class TicTacToeGame {
     public static void main(String[] args) {
-        TicTacToeGame game = new TicTacToeGame();
+        Game game = new Game();
         game.initializeGame();
         game.startGame();
 
