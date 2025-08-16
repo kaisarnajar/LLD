@@ -40,6 +40,8 @@ public class ElevatorController {
         this.schedulingStrategy = strategy;
     }
 
+    //External request. floorNumber means from which floor the request came.
+    //And direction means whether that person wants to go down or up.
     public void requestElevator(int elevatorId, int floorNumber, Direction direction) {
         System.out.println(
                 "External request: Floor " + floorNumber + ", Direction " + direction);
