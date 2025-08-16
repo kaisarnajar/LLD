@@ -5,22 +5,20 @@ import ElevatorSystem.UtilityClasses.ElevatorController;
 
 public class ElevatorRequest implements ElevatorCommand {
 
-    private int elevatorId;
-    private int floor; //Floor where the request is made.
-    private Direction requestDirection;
-    private ElevatorController controller;
-    private boolean isInternalRequest;
+    private final int elevatorId;
+    private final int floor;
+    private final Direction requestDirection;
+    private final boolean isInternalRequest;
 
     public ElevatorRequest(int elevatorId, int floor, boolean isInternalRequest, Direction direction) {
         this.elevatorId = elevatorId;
         this.floor = floor;
         this.isInternalRequest = isInternalRequest;
         this.requestDirection = direction;
-        this.controller = new ElevatorController();
     }
 
     @Override
-    public void execute() {
+    public void execute(ElevatorController controller) {
         if (isInternalRequest) {
             controller.requestFloor(elevatorId, floor);
         } else {
@@ -28,16 +26,13 @@ public class ElevatorRequest implements ElevatorCommand {
         }
     }
 
-    public Direction getDirection() {
-        return requestDirection;
-    }
+    public Direction getDirection() { return requestDirection; }
+    public int getFloor() { return floor; }
+    public boolean isInternalRequest() { return isInternalRequest; }
 
-    public int getFloor() {
-        return floor;
+    @Override
+    public String toString() {
+        return "Request[elevator=" + elevatorId + ", floor=" + floor + ", internal=" + isInternalRequest + "]";
     }
-
-    public boolean checkIsInternalRequest() {
-        return isInternalRequest;
-    }
-
 }
+
