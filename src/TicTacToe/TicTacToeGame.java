@@ -1,6 +1,8 @@
+package TicTacToe;
+
 import java.util.*;
 
-// ===================== Pair Class =====================
+// ===================== TicTacToe.Pair Class =====================
 class Pair<T, U> {
     private final T first;
     private final U second;
@@ -31,12 +33,12 @@ class Pair<T, U> {
     }
 }
 
-// ===================== PieceType Enum =====================
+// ===================== TicTacToe.PieceType Enum =====================
 enum PieceType {
     X, O
 }
 
-// ===================== PlayingPiece =====================
+// ===================== TicTacToe.PlayingPiece =====================
 class PlayingPiece {
     public PieceType pieceType;
     PlayingPiece(PieceType pieceType) {
@@ -44,7 +46,7 @@ class PlayingPiece {
     }
 }
 
-// ===================== Player =====================
+// ===================== TicTacToe.Player =====================
 class Player {
     public String name;
     public PlayingPiece playingPiece;
@@ -61,7 +63,7 @@ class Player {
     public MoveStrategy getMoveStrategy() { return moveStrategy; }
 }
 
-// ===================== Board =====================
+// ===================== TicTacToe.Board =====================
 class Board {
     public int size;
     public PlayingPiece[][] board;
@@ -111,7 +113,7 @@ interface MoveStrategy {
     Pair<Integer, Integer> getMove(Board board, Player player);
 }
 
-// ===================== HumanMoveStrategy =====================
+// ===================== TicTacToe.HumanMoveStrategy =====================
 class HumanMoveStrategy implements MoveStrategy {
     private Scanner scanner = new Scanner(System.in);
 
@@ -124,7 +126,7 @@ class HumanMoveStrategy implements MoveStrategy {
     }
 }
 
-// ===================== AIMoveStrategy =====================
+// ===================== TicTacToe.AIMoveStrategy =====================
 class AIMoveStrategy implements MoveStrategy {
     private Random random = new Random();
 
@@ -135,7 +137,7 @@ class AIMoveStrategy implements MoveStrategy {
     }
 }
 
-// ===================== TicTacToeGame =====================
+// ===================== TicTacToe.TicTacToeGame =====================
 class Game {
     Deque<Player> players;
     Board gameBoard;
@@ -144,10 +146,10 @@ class Game {
     public void initializeGame() {
         players = new LinkedList<>();
 
-        // Player 1: Human
+        // TicTacToe.Player 1: Human
         Player playerOne = new Player("Player1", new PlayingPiece(PieceType.X), new HumanMoveStrategy());
 
-        // Player 2: AI
+        // TicTacToe.Player 2: AI
         Player playerTwo = new Player("AI_Player", new PlayingPiece(PieceType.O), new AIMoveStrategy());
 
         players.add(playerOne);
